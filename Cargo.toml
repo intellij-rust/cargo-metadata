@@ -9,7 +9,7 @@ name = "cargo-metadata"
 test = false
 
 [dependencies]
-cargo = { git = "https://github.com/rust-lang/cargo.git" }
+cargo = { git = "https://github.com/rust-lang/cargo" }
 docopt = "0.6.76"
 rustc-serialize = "0.3.16"
 toml = "0.1.23"
