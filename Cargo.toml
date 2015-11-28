@@ -1,7 +1,11 @@
 [package]
-authors = [ "winger <isenbaev@gmail.com>",
-            "Aleksey Kladov <aleksey.kladov@gmail.com>" ]
+authors = ["winger <isenbaev@gmail.com>", "Aleksey Kladov <aleksey.kladov@gmail.com>"]
+description = "Cargo command for plugins/IDEs to get information about project in machine readable form"
+documentation = "https://github.com/intellij-rust/cargo-metadata"
+homepage = "https://github.com/intellij-rust/cargo-metadata"
 name = "cargo-metadata"
+readme = "README.md"
+repository = "https://github.com/intellij-rust/cargo-metadata"
 version = "0.1.0"
 
 [[bin]]
