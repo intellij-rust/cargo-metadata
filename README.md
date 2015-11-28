@@ -11,11 +11,13 @@ This should be useful for Rust plugins and IDEs.
 Installation
 ============
 
-If you have a recent version of cargo (>= 0.6) you can cargo install it.
+If you have a recent version of `cargo` (>= 0.6) you can cargo install it.
 
 ```bash
-$ cargo install cargo-edit
+$ cargo install --git https://github.com/intellij-rust/cargo-metadata
 ```
+
+At the moment `cargo-metadata` depends on the development version of `cargo` so it is not available on crates.io just yet.
 
 Usage
 =====
