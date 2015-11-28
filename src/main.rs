@@ -7,10 +7,13 @@ pub mod ops {
     pub mod cargo_output_metadata;
 }
 
+use std::env;
+
 use ops::cargo_output_metadata::{output_metadata, OutputTo, OutputFormat, OutputMetadataOptions};
 use cargo::execute_main_without_stdin;
-use cargo::util::{CliResult, CliError, Config};
-use cargo::util::important_paths::find_root_manifest_for_cwd;
+use cargo::util::{CliResult, CliError, Config, human};
+use cargo::util::errors::ChainError;
+use cargo::util::important_paths::find_root_manifest_for_wd;
 
 #[derive(RustcDecodable)]
 struct Options {
@@ -67,8 +70,10 @@ fn main() {
 
 fn run(options: Options, config: &Config) -> CliResult<Option<()>> {
     config.shell().set_verbose(options.flag_verbose);
-
-    let manifest = try!(find_root_manifest_for_cwd(options.flag_manifest_path));
+    let cwd = try!(env::current_dir().chain_error(|| {
+        human("couldn't get the current directory of the process")
+    }));
+    let manifest = try!(find_root_manifest_for_wd(options.flag_manifest_path, &cwd));
     let options = OutputMetadataOptions {
         features: options.flag_features,
         manifest_path: &manifest,

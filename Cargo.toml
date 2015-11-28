@@ -1,17 +1,15 @@
 [package]
+authors = ["winger <isenbaev@gmail.com>"]
 name = "cargo-metadata"
 version = "0.1.0"
-authors = ["winger <isenbaev@gmail.com>"]
-
-[dependencies]
-docopt = "*"
-rustc-serialize = "*"
-toml = "*"
-
-[dependencies.cargo]
-git = "https://github.com/winger/cargo"
 
 [[bin]]
+doc = true
 name = "cargo-metadata"
 test = false
-doc = true
+
+[dependencies]
+cargo = { git = "https://github.com/rust-lang/cargo.git" }
+docopt = "0.6.76"
+rustc-serialize = "0.3.16"
+toml = "0.1.23"

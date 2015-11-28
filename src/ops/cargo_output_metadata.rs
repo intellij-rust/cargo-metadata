@@ -4,12 +4,12 @@ use std::fs;
 use std::path::{Path, PathBuf};
 use rustc_serialize::{json, Decoder, Decodable};
 use toml;
+use cargo::core::resolver::Resolve;
+use cargo::core::{Source, Package};
+use cargo::sources::PathSource;
 use cargo::util::CargoResult;
 use cargo::util::config::Config;
-use cargo::core::{Source, Package};
-use cargo::core::resolver::Resolve;
-use cargo::sources::PathSource;
-use cargo::ops;
+use cargo;
 
 #[derive(RustcDecodable)]
 pub enum OutputFormat {
@@ -129,8 +129,8 @@ fn resolve_dependencies(manifest: &Path, config: &Config, features: Vec<String>,
     let package = try!(source.root_package());
 
     let (packages, resolve_with_overrides, _) =
-            try!(ops::resolve_dependencies(
-                &package, config, None, features, no_default_features));
+            try!(cargo::ops::resolve_dependencies(
+                 &package, config, None, features, no_default_features));
 
     Ok((resolve_with_overrides, packages))
 }
