@@ -1,5 +1,6 @@
 [package]
-authors = ["winger <isenbaev@gmail.com>"]
+authors = [ "winger <isenbaev@gmail.com>",
+            "Aleksey Kladov <aleksey.kladov@gmail.com>" ]
 name = "cargo-metadata"
 version = "0.1.0"
 
